@@ -1,0 +1,77 @@
+{
+  "categories": [
+    {
+      "name": "Men Clothing & Fashion",
+      "subcategory": [
+        "Outwear & Jackets",
+        "Sporting",
+        "Accessories"
+      ]
+    },
+    {
+      "name": "Women Clothing & Fashion",
+      "subcategory": [
+        "Wedding & Event",
+        "Tops & Sets Women",
+        "Watches"
+      ]
+    },
+    {
+      "name": "Kid Clothing & Fashion",
+      "subcategory": [
+        "Tops & Sets Kid",
+        "Children's sleepwear",
+        "Children's shoes"
+      ]
+    },
+    {
+      "name": "Kid Toy",
+      "subcategory": [
+        "Car & Excavator",
+        "Teddy bear",
+        "Lego"
+      ]
+    },
+    {
+      "name": "Cellphone",
+      "subcategory": [
+        "Smartphone",
+        "Headphone",
+        "Phone charger",
+        "Phone case"
+      ]
+    },
+    {
+      "name": "Fashion Sports",
+      "subcategory": [
+        "Sport shoes",
+        "Sport clothes",
+        "Accessories"
+      ]
+    },
+    {
+      "name": "Genuine Cosmetics",
+      "subcategory": [
+        "Lipstick",
+        "Makeup",
+        "Makeup tools"
+      ]
+    },
+    {
+      "name": "Jewelery",
+      "subcategory": [
+        "Rings & Bracelets",
+        "Necklace",
+        "Earring"
+      ]
+    },
+    {
+      "name": "Fashion Watches",
+      "subcategory": [
+        "Sports Watches",
+        "Electronic Clock",
+        "Mechanical Watch"
+      ]
+    }
+  ]
+}

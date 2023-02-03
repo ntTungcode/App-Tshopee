@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "253019660109",
+    "project_id": "t-shopee-c86b3",
+    "storage_bucket": "t-shopee-c86b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253019660109:android:6f1506dfff4558b7326104",
+        "android_client_info": {
+          "package_name": "com.example.tmart_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253019660109-5sfntmt84u9b2gstdidbt4j7c0s6cfok.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tmart_app",
+            "certificate_hash": "1d6b08a821702483ab45d12dd48d54bf480356a7"
+          }
+        },
+        {
+          "client_id": "253019660109-01nef3iusgqj489tcaebjtfb8g5nc5pb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTLRDzoJPZql-X7wNbMGE4nS-j_qcgpu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253019660109-01nef3iusgqj489tcaebjtfb8g5nc5pb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
