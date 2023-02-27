@@ -46,6 +46,13 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         child: Scaffold(
             appBar: AppBar(
               title: widget.title!.text.fontFamily(bold).white.make(),
+              leading: IconButton(
+                onPressed: () {
+                  controller.productRelative.clear();
+                  Get.back();
+                },
+                icon: const Icon(Icons.arrow_back),
+              ),
             ),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,7 +76,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                             .margin(const EdgeInsets.symmetric(horizontal: 4))
                             .make().onTap(() {
                               switchCategory("${controller.subcat[index]}");
-                              setState(() {});
+                              // setState(() {});
                         })),
                   ),
                 ),

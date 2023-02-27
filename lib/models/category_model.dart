@@ -17,9 +17,6 @@ class CategoryModel {
             json["categories"].map((x) => Category.fromJson(x))),
       );
 
-  // Map<String, dynamic> toJson() => {
-  //       "categories": List<dynamic>.from(categories.map((x) => x.toJson())),
-  //     };
 }
 
 class Category {
@@ -35,9 +32,4 @@ class Category {
         name: json["name"],
         subcategory: List<String>.from(json["subcategory"].map((x) => x)),
       );
-
-  // Map<String, dynamic> toJson() => {
-  //       "name": name,
-  //       "subcategory": List<dynamic>.from(subcategory.map((x) => x)),
-  //     };
 }

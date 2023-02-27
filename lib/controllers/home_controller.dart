@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:tmart_app/consts/consts.dart';
 
@@ -18,20 +20,11 @@ class HomeController extends GetxController{
   var searchController = TextEditingController();
 
   getUsername() async{
-   var n = await firestore.collection(usersCollection).where('id',isEqualTo: currentUser!.uid).get().then((value) {
+   var n = await firestore.collection(usersCollection).where('id',isEqualTo: FirebaseAuth.instance.currentUser!.uid).get().then((value) {
         if (value.docs.isNotEmpty) {
           return value.docs.single['name'];
       }
     });
    username = n;
-   // print(username);
   }
-  // fetchFeatured(data) {
-  //   featuredList.clear();
-  //   for( var i = 0; i < data.length; i++) {
-  //     featuredList.add(data[i]);
-  //     print(data[i]);
-  //   }
-  //   return featuredList.shuffle();
-  // }
 }

@@ -85,7 +85,6 @@ const imgP1 = "assets/images/p1.jpeg";
 const imgP2 = "assets/images/p2.jpeg";
 const imgP3 = "assets/images/p3.jpeg";
 const imgP4 = "assets/images/p4.jpeg";
-// const imgP5 = "assets/images/p5.jpeg";
 const imgP5 = "assets/images/p5.jpg";
 const imgP6 = "assets/images/p6.jpeg";
 const imgP7 = "assets/images/p7.jpeg";

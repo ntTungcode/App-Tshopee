@@ -3,6 +3,7 @@ import 'package:tmart_app/consts/consts.dart';
 class FirestoreServices {
   //get users data
   static getUser(uid){
+    // print(uid + "jdjds");
     return firestore.collection(usersCollection).where('id', isEqualTo: uid).snapshots();
   }
 
@@ -38,13 +39,14 @@ class FirestoreServices {
         .orderBy('created_on', descending: false)
         .snapshots();
   }
-  
-  
-  //Order my
+
+
+  //Hiển thị danh sách Order
   static getAllOrders(){
     return firestore.collection(ordersCollection).where('order_by', isEqualTo: currentUser!.uid).snapshots();
   }
-  
+
+  //Hiển thị danh sách yêu thích
   static getWishlists(){
     return firestore.collection(productsCollection).where('p_wishlist', arrayContains: currentUser!.uid).snapshots();
   }
@@ -53,6 +55,7 @@ class FirestoreServices {
     return firestore.collection(chatsCollection).where('fromId',isEqualTo: currentUser!.uid).snapshots();
   }
 
+  //Hiện thị số lượng của cart vs yêu thích và order
   static getCounts() async{
     var res = await Future.wait([
       firestore.collection(cartCollection).where('added_by', isEqualTo: currentUser!.uid).get().then((value){
@@ -72,16 +75,13 @@ class FirestoreServices {
     return firestore.collection(productsCollection).snapshots();
   }
 
-  // static getfeaturedProducts() {
-  //   return firestore.collection(productsCollection).limit(2).get();
-  // }
 
-//get featured products method
+//Hiển thị danh sách sản phẩm nổi bật
   static getFeaturedProducts() {
     return firestore.collection(productsCollection).where('is_featured', isEqualTo: true).get();
   }
 
-  //get search product
+  //Sản phẩm tìm kiếm
   static searchProducts(title){
     return firestore.collection(productsCollection).get();
   }

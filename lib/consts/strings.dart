@@ -64,7 +64,7 @@ const video = "Video",
       sellerpolicy = "Seller Policy",
       returnpolicy = "Return Policy",
       supportpolicy = "Support Policy",
-      productsyoumaylike = "Products you may also like";
+      productsyoumaylike = "Auto-suggested products";
 
 
 const wishlist = "My Wishlist",
