@@ -1,5 +1,3 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:tmart_app/consts/consts.dart';
@@ -15,10 +13,12 @@ class CartController extends GetxController {
   var products = [];
   var vendors = [];
 
+  //Thay đổi giá tiền
   changePaymentIndex(index) {
     paymentIndex.value = index;
   }
 
+  //Tính toán tiền
   calculate(data) {
     totalP.value = 0;
     for (var i =0; i < data.length; i++) {
@@ -32,11 +32,9 @@ class CartController extends GetxController {
   var postalcodeController = TextEditingController();
   var phoneController = TextEditingController();
   
-  
+  //Thống tin đặt hàng
   placeMyOrder({required orderPaymentMethod,required totalAmount}) async{
-
     placingOrder(true);
-
     await getProductDetails();
     await firestore.collection(ordersCollection).doc().set({
       'order_code' :"DA_03032023_VN",
@@ -62,6 +60,7 @@ class CartController extends GetxController {
     placingOrder(false);
   }
 
+  //Lấy chi tiết sản phẩm
   getProductDetails() {
     products.clear();
     vendors.clear();

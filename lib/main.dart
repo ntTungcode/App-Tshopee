@@ -2,8 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tmart_app/consts/colors.dart';
-import 'package:tmart_app/views/auth_screen/login_screen.dart';
-import 'package:tmart_app/views/home_screen/home_screen.dart';
 import 'package:tmart_app/views/screens/on_boarding_screen.dart';
 import 'package:tmart_app/views/splash_screen/splash_screen.dart';
 
@@ -22,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,// xóa logo
       title: appname,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.transparent,

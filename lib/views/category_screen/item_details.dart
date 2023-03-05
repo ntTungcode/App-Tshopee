@@ -101,7 +101,7 @@ class _IteamDetailsState extends State<IteamDetails> {
                   .color(darkFontGrey)
                   .fontFamily(semibold)
                   .make(),
-              // 10.heightBox,
+              //Phần sao
               VxRating(
                   isSelectable: false,
                   value: double.parse(widget.data['p_rating']),

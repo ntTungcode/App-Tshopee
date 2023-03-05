@@ -248,12 +248,12 @@ class HomeScreen extends StatelessWidget {
                     VxSwiper.builder(
                         aspectRatio: 16 / 9,
                         autoPlay: true,
-                        height: 150,
+                        height: 130,
                         enlargeCenterPage: true,
-                        itemCount: secondSlidersList.length,
+                        itemCount: secondSlidersList2.length,
                         itemBuilder: (context, index) {
                           return Image.asset(
-                            secondSlidersList[index],
+                            secondSlidersList2[index],
                             fit: BoxFit.fill,
                           )
                               .box

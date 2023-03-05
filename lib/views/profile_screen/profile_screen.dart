@@ -36,7 +36,6 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 );
               } else {
-                //Bug
                 var data = snapshot.data!.docs[0];
                 return SafeArea(
                     child: Column(

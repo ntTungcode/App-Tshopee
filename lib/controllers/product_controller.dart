@@ -15,43 +15,40 @@ class ProductController extends GetxController {
   var totalPrice = 0.obs;
   var subcat = [];
   var isFav = false.obs;
-  // var indexvar = 0.obs;
-  // var itemProduct = [].obs;
   var recenctProductname = '';
-  List<String> productitemname = [];
+  List<String> productItemName = [];
 
+  //
   getSubCategories(title) async {
     subcat.clear();
     var data = await rootBundle.loadString("lib/services/category_model.json");
     var decoded = categoryModelFromJson(data);
-    var s =
-        decoded.categories.where((element) => element.name == title).toList();
-
+    var s = decoded.categories.where((element) => element.name == title).toList();
     for (var e in s[0].subcategory) {
       subcat.add(e);
     }
   }
-
+  //Click chọn màu
   changeColorIndex(index) {
     colorIndex.value = index;
   }
-
+  //Tăng số lương
   increaseQuantity(totalQuantity) {
     if (quantity.value < totalQuantity) {
       quantity.value++;
     }
   }
-
+  //giảm số lượng
   decreaseQuantity() {
     if (quantity.value > 0) {
       quantity.value--;
     }
   }
-
+  //Cập nhật giá tiền
   calculateTotalPrice(price) {
     totalPrice.value = price * quantity.value;
   }
-
+  //Click khi thêm vào cart
   addToCart(
       {title, img, sellername, color, qty, tprice, context, vendorID}) async {
     await firestore.collection(cartCollection).doc().set({
@@ -72,10 +69,9 @@ class ProductController extends GetxController {
     totalPrice.value = 0;
     quantity.value = 0;
     colorIndex.value = 0;
-    // itemProduct.clear();
-    // productRelative.clear();
   }
 
+  //Thêm vào list yêu thích
   addToWishlist(docId, context) async {
     await firestore.collection(productsCollection).doc(docId).set({
       'p_wishlist': FieldValue.arrayUnion([currentUser!.uid])
@@ -84,6 +80,7 @@ class ProductController extends GetxController {
     VxToast.show(context, msg: "Added to wishlist");
   }
 
+  //Bỏ thích khỏi list yêu thích
   removeFromWishlist(docId, context) async {
     await firestore.collection(productsCollection).doc(docId).set({
       'p_wishlist': FieldValue.arrayRemove([currentUser!.uid])
@@ -104,7 +101,7 @@ class ProductController extends GetxController {
   void getData(product, title) async {
     if(product['p_name'] != recenctProductname){
       productRelative.value.clear();
-      productitemname.clear();
+      productItemName.clear();
       recenctProductname = product['p_name'];
     }
     //Tên phân loại con sản phẩm
@@ -115,8 +112,6 @@ class ProductController extends GetxController {
     var data = await rootBundle.loadString("lib/services/category_model.json");
     //Đưa data string về dạng Json
     var decoded = categoryModelFromJson(data);
-    //
-    // var s = decoded.categories.where((element) => element.name == title).toList();
     //Khai báo 1 List danh sách các phân loại con có dạng String : Ví dụ : Máy tính, bàn phím, chuột.
     List<String> stringSubcategoryList = [];
     //Lọc danh sách lấy danh sách các phân loại con của phân loại cha ( bao gồm cả phân loại con của sản phẩm)
@@ -125,13 +120,12 @@ class ProductController extends GetxController {
         stringSubcategoryList = element.subcategory;
       }
     });
-    //Khai báo List để chứa các sản phẩm của các phân loại
+    //Khai báo List để chứa các sản phẩm của các phân loại cha và con
     List<List<dynamic>> productItem = [];
     // Lấy số lượng các phân loại con bao gồm cả của phân loại con của sản phẩm đc click đó
     int lebsub = stringSubcategoryList.length;
     // Duyệt lấy danh sách các sản phẩm của các phân loại con( trừ sản phẩm được đc click)
     for (int i = 0; i < lebsub ; i++) {
-
       var itemlist =  []; // Khai báo list tạm thời
       await firestore
           .collection(productsCollection)
@@ -153,19 +147,8 @@ class ProductController extends GetxController {
       var itemlist = itemP.length;
         if(itemlist > 0){
         var indexvar = Random().nextInt(itemlist);
-        // print(indexvar.toString() + "-" + itemlist.toString());
-          // if(productRelative.isNotEmpty){
-          //   for(String element in productitemname){
-          //     print(itemP[indexvar]['p_name'] + "-"+element);
-          //     if(element != itemP[indexvar]['p_name']){
-          //       itemProduct.add(itemP[indexvar]);
-          //       productitemname.add(itemP[indexvar]['p_name']);
-          //     }
-          //   }
-          // }else{
             itemProduct.add(itemP[indexvar]);
-            productitemname.add(itemP[indexvar]['p_name']);
-        //   }
+            productItemName.add(itemP[indexvar]['p_name']);
         }
     }
     productRelative.value = itemProduct;

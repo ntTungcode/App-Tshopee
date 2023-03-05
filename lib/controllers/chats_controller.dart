@@ -24,9 +24,9 @@ class ChatsController extends GetxController {
 
   var isLoading = false.obs;
 
+
   getChatId() async {
     isLoading(true);
-
     await chats
         .where('users', isEqualTo: {friendId: null, currentId: null})
         .limit(1)

@@ -47,6 +47,7 @@ class EditProfileScreen extends StatelessWidget {
                         fit: BoxFit.cover,
                       ).box.roundedFull.clip(Clip.antiAlias).make(),
             // 10.heightBox,
+            //Chọn ảnh mới
             ourButton(
                 color: redColor,
                 onPress: () {
@@ -55,6 +56,7 @@ class EditProfileScreen extends StatelessWidget {
                 },
                 textColor: whiteColor,
                 title: "Change"),
+            //Thông tin chỉnh sửa
             const Divider(),
             // 20.heightBox,
             customTextField(
@@ -83,28 +85,26 @@ class EditProfileScreen extends StatelessWidget {
                         color: redColor,
                         onPress: () async {
                           controller.isloading(true);
-
-                          //if image is not selected
+                          //nếu hình ảnh không được chọn
                           if (controller.profileImgPath.value.isNotEmpty) {
                             await controller.uploadProfileImage();
                           } else {
                             controller.profileImageLink = data['imageUrl'];
                           }
-
-                          //if old password matches data base
+                          //nếu mật khẩu cũ khớp với cơ sở dữ liệu
                           if (data['password'] == controller.oldpasswordController.text) {
                               await controller.changeAuthPassword(
                                 email: data['email'],
                                 password: controller.oldpasswordController.text,
-                                newpassword: controller.newpasswordController.text,);
+                                newpassword: controller.newpasswordController.text);
 
-                            await controller.updateProfile(
-                                imgUrl: controller.profileImageLink,
-                                name: controller.nameController.text,
-                                password: controller.newpasswordController.text);
-                            VxToast.show(context, msg: "Updated");
+                              await controller.updateProfile(
+                                  imgUrl: controller.profileImageLink,
+                                  name: controller.nameController.text,
+                                  password: controller.newpasswordController.text);
+                            VxToast.show(context, msg: "Updated");//Thông báo thành công
                           }else{
-                            VxToast.show(context, msg: "Wrong old password");
+                            VxToast.show(context, msg: "Wrong old password");//Thông báo mật khẩu cũ không đúng
                             controller.isloading(false);
                           }
                         },

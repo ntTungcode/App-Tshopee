@@ -1,36 +1,32 @@
 import 'package:tmart_app/consts/consts.dart';
 
 class FirestoreServices {
-  //get users data
+  // lấy dữ liệu người dùng
   static getUser(uid){
-    // print(uid + "jdjds");
     return firestore.collection(usersCollection).where('id', isEqualTo: uid).snapshots();
   }
 
-  //get products data
+  // lấy dữ liệu sản phẩm
   static getProducts(category) {
     return firestore.collection(productsCollection).where('p_category',isEqualTo: category).snapshots();
   }
-
+  //Lấy dữ liệu sản phẩm con
   static getSubCategoryProducts(title) {
     return firestore.collection(productsCollection).where('p_subcategory',isEqualTo: title).snapshots();
   }
-
-
-  //get Cart
+  //Lấy dữ liệu giỏ hàng
   static getCart(uid) {
     return firestore
         .collection(cartCollection)
         .where('added_by', isEqualTo: uid)
         .snapshots();
   }
-
-  //Delete Document
+  //Xõa item sản phẩm trong phần giỏ hàng
   static deleteDocument(docId) {
     return firestore.collection(cartCollection).doc(docId).delete();
   }
 
-  //get all chat messages
+  //Lấy tất cả tin nhắn trò chuyện
   static getChatMessages(docId) {
     return firestore
         .collection(chatsCollection)
@@ -39,7 +35,6 @@ class FirestoreServices {
         .orderBy('created_on', descending: false)
         .snapshots();
   }
-
 
   //Hiển thị danh sách Order
   static getAllOrders(){
@@ -71,6 +66,7 @@ class FirestoreServices {
     return res;
   }
 
+  //Lấy dữ liệu và cho hiển thị tất cả sản phẩm ra ngoài màn hình chính
   static allproducts(){
     return firestore.collection(productsCollection).snapshots();
   }

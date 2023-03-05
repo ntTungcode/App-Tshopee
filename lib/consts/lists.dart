@@ -8,6 +8,8 @@ const slidersList = [imgSlider1, imgSlider2, imgSlider3, imgSlider4];
 //List Images2
 const secondSlidersList = [imgSs1, imgSs2, imgSs3, imgSs4];
 
+//List Images3
+const secondSlidersList2 = [imgFd1, imgFd2, imgFd3];
 
 const featuredImages1 = [imgS1, imgS2, imgS3];
 const featuredImages2 = [imgS4, imgS5, imgS6];

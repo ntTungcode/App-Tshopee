@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -14,11 +13,12 @@ class ProfileController extends GetxController {
   var profileImageLink = '';
   var isloading = false.obs;
 
-  //textfield
+  //text field
   var nameController = TextEditingController();
   var oldpasswordController = TextEditingController();
   var newpasswordController = TextEditingController();
 
+  //Thay đổi hình ảnh
   changeImage(context) async {
     try {
       final img = await ImagePicker()
@@ -30,6 +30,7 @@ class ProfileController extends GetxController {
     }
   }
 
+  //Up hình ảnh vào storage
   uploadProfileImage() async {
     var filename = basename(profileImgPath.value);
     var destination = 'images/${currentUser!.uid}/$filename';
@@ -37,7 +38,7 @@ class ProfileController extends GetxController {
     await ref.putFile(File(profileImgPath.value));
     profileImageLink = await ref.getDownloadURL();
   }
-
+  //Up Thông tin cá nhân
   updateProfile({name, password, imgUrl}) async {
     var store = firestore.collection(usersCollection).doc(currentUser?.uid);
     await store.set({'name': name, 'password': password, 'imageUrl': imgUrl},
@@ -45,9 +46,9 @@ class ProfileController extends GetxController {
     isloading(false);
   }
 
+  //Check password và cập nhật newpassword
   changeAuthPassword({email, password, newpassword}) async {
     final cred = EmailAuthProvider.credential(email: email, password: password);
-
     await currentUser!.reauthenticateWithCredential(cred).then((value) {
       currentUser!.updatePassword(newpassword);
     }).catchError((error){

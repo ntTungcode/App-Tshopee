@@ -86,6 +86,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ],
                       ),
                       5.heightBox,
+                      //icon loading
                       controller.isloading.value?  const CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation(redColor),
                       ): ourButton(
@@ -98,7 +99,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               try {
                                 await controller.signupMethod(
                                     context: context,
-                                    email: emailController.text, password: passwordController.text).then((value){
+                                    email: emailController.text,
+                                    password: passwordController.text).then((value){
                                       return controller.storeUserData(
                                         email: emailController.text,
                                         password: passwordController.text,

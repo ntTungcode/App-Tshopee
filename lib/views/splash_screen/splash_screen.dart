@@ -22,10 +22,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   changeScreen(){
     Future.delayed(const Duration(seconds: 3),(){
-      //using getX
-      // Get.to(() => const OnBoardingScreen());
       auth.authStateChanges().listen((User? user) {
-        if(user == null && mounted) {
+        if(user ==null && mounted) {
           Get.to(() => const LoginScreen());
         } else{
           Get.to(() => const Home());
@@ -50,17 +48,17 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
               Align(
                 alignment: Alignment.topLeft,
-                child: Image.asset(icSplashBg, width: 300),
+                child: Image.asset(icSplashBg, width: 300),//Thêm hình vào nền
               ),
             20.heightBox,
-            applogoWidget(),
+            applogoWidget(),//Thêm logo
             10.heightBox,
-            appname.text.fontFamily(bold).size(22).white.make(),
+            appname.text.fontFamily(bold).size(22).white.make(),//Tên app
             5.heightBox,
-            appversion.text.white.make(),
+            appversion.text.white.make(),//Phiên bản của app
             const Spacer(),
             // 340.heightBox,
-            credits.text.white.fontFamily(semibold).make(),
+            credits.text.white.fontFamily(semibold).make(),//tên ng tạo
             30.heightBox,
           ],
         ),
